@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f7f5f1;
+  --ink: #14181f;
+  --ink-soft: #4a5163;
+  --navy: #101a2e;
+  --navy-soft: #1c2c4a;
+  --gold: #b8863b;
+  --gold-soft: #e7d3ad;
+  --line: #dedad2;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-navy: var(--navy);
+  --color-navy-soft: var(--navy-soft);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-line: var(--line);
+  --font-sans: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --font-serif: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.8s ease-out both;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+[id] {
+  scroll-margin-top: 5rem;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-4deg);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* JS-off fallback: keep scroll-revealed content visible without the observer */
+.no-js .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
